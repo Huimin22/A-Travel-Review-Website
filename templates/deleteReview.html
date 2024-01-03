@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Review Page</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/searchHotel">Search Hotel</a></li>
+<!--            <li><a href="/editReview">Edit Review</a></li>-->
+            <li><a href="/showFavorites">Show Favorites</a></li>
+            <li><a href="showHistory">Show History</a></li>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="col-md-12 text-center">
+    <h3>Your Review List</h3>
+    <table class="table" >
+        <thead>
+        <tr>
+            <th>HotelId</th>
+            <th>ReviewId</th>
+            <th>Title</th>
+            <th>Review Content</th>
+            <th>Date</th>
+            <th>Rating</th>
+        </tr>
+        </thead>
+        <tbody id="hotelsTableBody">
+        #foreach($review in $reviews)
+        <tr>
+            <td>$review.hotelId</td>
+            <td>$review.reviewId</td>
+            <td>$review.title</td>
+            <td>$review.reviewText</td>
+            <td>$review.datePosted</td>
+            <td>$review.ratingOverall</td>
+        </tr>
+        #end
+        </tbody>
+    </table>
+</div>
+
+<div class="col-xs-12 text-center">
+    <h3>Delete Your Review Here</h3>
+    <form id="reviewForm" action="$servlet" method="post">
+        <div class="form-group">
+            <label for="hotelId" class="col-xs-6 col-xs-offset-3 text-center">Hotel Id:</label>
+            <div class="col-xs-6 col-xs-offset-3">
+                <input type="text" class="form-control" id="hotelId" name="hotelId" value="$hotelId" readonly maxlength="30">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="reviewId" class="col-xs-6 col-xs-offset-3 text-center">Review Id:</label>
+            <div class="col-xs-6 col-xs-offset-3">
+                <input type="text" class="form-control" id="reviewId" name="reviewId" value="$reviewId" readonly maxlength="30">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-6 col-xs-offset-3" style="height: 20px;"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary col-xs-6 col-xs-offset-3">Confirm</button>
+    </form>
+</div>
+
+</body>
+</html>

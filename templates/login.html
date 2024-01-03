@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h2 class="text-center">Login</h2>
+                        #if($error == true)
+                        <div class="alert alert-danger" role="alert">Invalid username or password.</div>
+                        #end
+                        #if($registerSuccess == true)
+                        <div class="alert alert-success" role="alert">Registration successful. Please log in.</div>
+                        #end
+            <form action="$servlet" method="post">
+                <div class="form-group">
+                    <label for="name">Username:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <hr>
+            <p class="text-center">Don't have an account? <a href="/register">Register here</a>.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

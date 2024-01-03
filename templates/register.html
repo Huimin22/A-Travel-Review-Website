@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h2 class="text-center">Register</h2>
+
+            #if($usernameTaken == true)
+            <div class="alert alert-danger" role="alert">Username is already taken. Please choose a different username.</div>
+            #end
+
+            <form action="$servlet" method="post">
+                <div class="form-group">
+                    <label for="name">Username:</label>
+                    <input type="text" class="form-control" id="name" name="name" pattern="[A-Za-z][A-Za-z\d_-]{4,20}"
+                           title="Username must start with an alphabet and can only include alphabets, digits, underscores, and hyphens. It must be between 5 and 20 characters long.">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[#?!@$%^&*_-])[A-Za-z\d#?!@$%^&*_-].{6,}$"
+                           title="Password must contain at least one letter, one digit, and one special character (#?!@$%^&*_-). It must be at least 6 characters" >
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+
+            <hr>
+
+            <p class="text-center">Already have an account? <a href="/login">Login here</a>.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Review Page</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/searchHotel">Search Hotel</a></li>
+<!--            <li><a href="/editReview">Edit Review</a></li>-->
+<!--            <li><a href="/deleteReview">Delete Review</a></li>-->
+            <li><a href="/showFavorites">Show Favorites</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Link History</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Link</th>
+        </tr>
+        </thead>
+        <tbody>
+        #foreach($link in $links)
+        <tr>
+            <td><p>$link</p></td>
+        </tr>
+        #end
+        </tbody>
+    </table>
+
+    #if(!$links.isEmpty())
+    <a href="/clearHistory" class="btn btn-danger">Clear History</a>
+    #end
+</div>
+
+</body>
+</html>
+

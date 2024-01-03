@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search Page</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li><a href="/home">Home</a></li>
+<!--            <li><a href="/editReview">Edit Review</a></li>-->
+<!--            <li><a href="/deleteReview">Delete Review</a></li>-->
+            <li><a href="/showFavorites">Show Favorites</a></li>
+            <li><a href="showHistory">Show History</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="original">
+
+</div>
+
+<div id="duplicate">
+
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <form id="searchForm" action="$servlet" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter keyword" id="keywordInput" name="hotelname">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Search</button>
+                </span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Hotel Name</th>
+                    <th scope="col">Favorite</th>
+                    <script src="js/favorite.js"> </script>
+                </tr>
+                </thead>
+                <tbody>
+                #foreach($hotel in $resHotels)
+                <tr>
+                    <td>
+                        <a href="/hotelInfo?hotelId=$hotel.hotelId">$hotel.name</a>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary mb-2" onclick="addFavorite('$hotel.hotelId','$hotel.name')">Favorite</button>
+                    </td>
+                </tr>
+                #end
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
